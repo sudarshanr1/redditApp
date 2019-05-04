@@ -1,0 +1,13 @@
+<div class="nav-bar">
+	<h2>{{ "POSTS" | translate }}</h2>
+	<translation></translation>
+	<div>
+		<a
+			ng-repeat="navBar in vm.navBars"
+			ng-class="{active: vm[navBar]}"
+			ng-click="vm.makeActive(navBar)"
+			ui-sref="{{ navBar }}"
+			>{{ navBar.toUpperCase() | translate }}</a
+		>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<div
+	class="pic-wrap"
+	ng-if="vm.item.url.includes('.jpg') || vm.item.url.includes('.img')"
+>
+	<div>
+		<img ng-src="{{ vm.item.url }}" />
+	</div>
+	<div class="pic-posted-by">
+		{{ "POSTED_BY" | translate }} <b>{{ vm.item.author }}</b>
+	</div>
+</div>

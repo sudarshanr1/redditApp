@@ -1,0 +1,7 @@
+<div
+	ng-class="{'post': !vm.isPicsState(), 'pic': vm.isPicsState()}"
+	ng-repeat="post in vm.posts.children | limitTo:vm.quantity"
+>
+	<item ng-if="!vm.isPicsState()" item="post.data"></item>
+	<pic ng-if="vm.isPicsState()" item="post.data"></pic>
+</div>

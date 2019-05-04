@@ -1,0 +1,21 @@
+<div class="post-wrap">
+	<div>
+		{{ "POSTED_BY" | translate }} <b>{{ vm.item.author }}</b>
+	</div>
+
+	<div>
+		<p>
+			<b>{{ vm.item.title }}</b>
+		</p>
+		<a class="post-url" title="{{ vm.item.url }}" ng-href="{{ vm.item.url }}">{{
+			vm.item.url
+		}}</a>
+	</div>
+
+	<div class="comments">
+		<a href="https://www.reddit.com/{{ vm.item.permalink }}" target="_blank">{{
+			vm.item.num_comments
+		}}</a>
+		{{ "COMMENTS" | translate }}
+	</div>
+</div>

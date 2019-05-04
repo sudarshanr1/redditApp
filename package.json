@@ -1,0 +1,22 @@
+{
+	"name": "redditApp",
+	"version": "1.0.0",
+	"description": "Reddit app",
+	"main": "index.js",
+	"repository": "",
+	"author": "Sudarshan",
+	"license": "MIT",
+	"dependencies": {
+		"angular": "^1.7.2",
+		"angular-ui-router": "^1.0.18",
+		"angular-translate": "^2.18.1",
+		"angular-translate-loader-partial": "^2.18.1"
+	},
+	"devDependencies": {
+		"browser-sync": "^2.24.5",
+		"del": "^3.0.0",
+		"gulp": "^3.9.1",
+		"gulp-concat": "^2.6.1",
+		"run-sequence": "^2.2.1"
+	}
+}
