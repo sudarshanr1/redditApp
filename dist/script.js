@@ -50952,194 +50952,6 @@ return 'pascalprecht.translate';
 	angular.module("app", ["ui.router", "pascalprecht.translate"]);
 })();
 
-// home.component.js
-(() => {
-
-    angular
-        .module('app')
-        .component('navBar', {
-            controller: 'NavBarController',
-            controllerAs: 'vm',
-            templateUrl: 'app/nav-bar/nav-bar.html'
-        });
-
-})();
-// home.controller.js
-(() => {
-	angular.module("app").controller("NavBarController", NavBarController);
-
-	function NavBarController() {
-		const vm = this;
-		vm.news = true;
-		vm.makeActive = makeActive;
-		vm.navBars = ["news", "politics", "pics", "sports"];
-
-		function makeActive(item) {
-			for (let navBar of vm.navBars) {
-				if (navBar === item) {
-					vm[navBar] = true;
-				} else {
-					vm[navBar] = false;
-				}
-			}
-		}
-	}
-})();
-
-// posts.component.js
-(() => {
-
-    angular
-        .module('app')
-        .component('posts', {
-            controller: 'PostsController',
-            controllerAs: 'vm',
-            templateUrl: 'app/posts/posts.html'
-        });
-
-})();
-// posts.controller.js
-(() => {
-	angular.module("app").controller("PostsController", PostsController);
-
-	function PostsController($state, postsService) {
-		const vm = this;
-		vm.posts = null;
-		vm.quantity = 25;
-		vm.isPicsState = isPicsState;
-		activate();
-
-		function activate() {
-			getPosts();
-			// Poll every 6 seconds
-			setInterval(getPosts, 6000);
-		}
-
-		function isPicsState() {
-			return $state.current.data.pageTitle === "Pics";
-		}
-
-		function getPosts() {
-			postsService.getPosts().then(posts => {
-				vm.posts = posts.data;
-			});
-		}
-	}
-})();
-
-// posts.service.js
-(() => {
-	angular.module("app").factory("postsService", PostsService);
-
-	function PostsService($state, apiService) {
-		return {
-			getPosts: getPosts
-		};
-
-		////////////
-
-		function getPosts() {
-			return apiService.get($state.current.data.param, true);
-		}
-	}
-})();
-
-// api.service.js
-(() => {
-	angular.module("app").factory("apiService", ApiService);
-
-	function ApiService(apiBase, $http) {
-		return {
-			get: get
-		};
-
-		////////////
-
-		function get(endpoint, cache) {
-			return $http
-				.get(`${apiBase}${endpoint}`, {
-					cache: false
-				})
-				.then(response => response.data);
-		}
-	}
-})();
-
-// home.component.js
-(() => {
-	angular.module("app").component("translation", {
-		controller: "TranslationController",
-		controllerAs: "vm",
-		templateUrl: "app/translation/translation.html"
-	});
-})();
-
-// translation.controller.js
-(() => {
-	angular
-		.module("app")
-		.controller("TranslationController", TranslationController);
-
-	function TranslationController($translate) {
-		const vm = this;
-		vm.test = "test";
-		vm.allLangs = [
-			{ language: "English", code: "en" },
-			{ language: "Spanish", code: "esp" }
-		];
-		vm.useLanguage = useLanguage;
-
-		function useLanguage(code) {
-			$translate.use(code);
-		}
-	}
-})();
-
-// item.component.js
-(() => {
-
-    angular
-        .module('app')
-        .component('item', {
-            controller: 'ItemController',
-            controllerAs: 'vm',
-            templateUrl: 'app/shared/item/item.html',
-            bindings: {
-                item: '='
-            }
-        });
-
-})();
-// item.controller.js
-(() => {
-	angular.module("app").controller("ItemController", ItemController);
-
-	function ItemController() {
-		const vm = this;
-	}
-})();
-
-// item.component.js
-(() => {
-	angular.module("app").component("pic", {
-		controller: "PicController",
-		controllerAs: "vm",
-		templateUrl: "app/shared/pics/pic.html",
-		bindings: {
-			item: "="
-		}
-	});
-})();
-
-// item.controller.js
-(() => {
-	angular.module("app").controller("PicController", PicController);
-
-	function PicController() {
-		const vm = this;
-	}
-})();
-
 // app.routes.js
 (() => {
 	angular
@@ -51260,4 +51072,192 @@ return 'pascalprecht.translate';
 // app.settings.js
 (() => {
 	angular.module("app").value("apiBase", "https://www.reddit.com/r/");
+})();
+
+// home.component.js
+(() => {
+
+    angular
+        .module('app')
+        .component('navBar', {
+            controller: 'NavBarController',
+            controllerAs: 'vm',
+            templateUrl: 'app/nav-bar/nav-bar.html'
+        });
+
+})();
+// home.controller.js
+(() => {
+	angular.module("app").controller("NavBarController", NavBarController);
+
+	function NavBarController() {
+		const vm = this;
+		vm.news = true;
+		vm.makeActive = makeActive;
+		vm.navBars = ["news", "politics", "pics", "sports"];
+
+		function makeActive(item) {
+			for (let navBar of vm.navBars) {
+				if (navBar === item) {
+					vm[navBar] = true;
+				} else {
+					vm[navBar] = false;
+				}
+			}
+		}
+	}
+})();
+
+// api.service.js
+(() => {
+	angular.module("app").factory("apiService", ApiService);
+
+	function ApiService(apiBase, $http) {
+		return {
+			get: get
+		};
+
+		////////////
+
+		function get(endpoint, cache) {
+			return $http
+				.get(`${apiBase}${endpoint}`, {
+					cache: false
+				})
+				.then(response => response.data);
+		}
+	}
+})();
+
+// home.component.js
+(() => {
+	angular.module("app").component("translation", {
+		controller: "TranslationController",
+		controllerAs: "vm",
+		templateUrl: "app/translation/translation.html"
+	});
+})();
+
+// translation.controller.js
+(() => {
+	angular
+		.module("app")
+		.controller("TranslationController", TranslationController);
+
+	function TranslationController($translate) {
+		const vm = this;
+		vm.test = "test";
+		vm.allLangs = [
+			{ language: "English", code: "en" },
+			{ language: "Spanish", code: "esp" }
+		];
+		vm.useLanguage = useLanguage;
+
+		function useLanguage(code) {
+			$translate.use(code);
+		}
+	}
+})();
+
+// posts.component.js
+(() => {
+
+    angular
+        .module('app')
+        .component('posts', {
+            controller: 'PostsController',
+            controllerAs: 'vm',
+            templateUrl: 'app/posts/posts.html'
+        });
+
+})();
+// posts.controller.js
+(() => {
+	angular.module("app").controller("PostsController", PostsController);
+
+	function PostsController($state, postsService) {
+		const vm = this;
+		vm.posts = null;
+		vm.quantity = 25;
+		vm.isPicsState = isPicsState;
+		activate();
+
+		function activate() {
+			getPosts();
+			// Poll every 60 seconds
+			setInterval(getPosts, 60000);
+		}
+
+		function isPicsState() {
+			return $state.current.data.pageTitle === "Pics";
+		}
+
+		function getPosts() {
+			postsService.getPosts().then(posts => {
+				vm.posts = posts.data;
+			});
+		}
+	}
+})();
+
+// posts.service.js
+(() => {
+	angular.module("app").factory("postsService", PostsService);
+
+	function PostsService($state, apiService) {
+		return {
+			getPosts: getPosts
+		};
+
+		////////////
+
+		function getPosts() {
+			return apiService.get($state.current.data.param, true);
+		}
+	}
+})();
+
+// item.component.js
+(() => {
+
+    angular
+        .module('app')
+        .component('item', {
+            controller: 'ItemController',
+            controllerAs: 'vm',
+            templateUrl: 'app/shared/item/item.html',
+            bindings: {
+                item: '='
+            }
+        });
+
+})();
+// item.controller.js
+(() => {
+	angular.module("app").controller("ItemController", ItemController);
+
+	function ItemController() {
+		const vm = this;
+	}
+})();
+
+// item.component.js
+(() => {
+	angular.module("app").component("pic", {
+		controller: "PicController",
+		controllerAs: "vm",
+		templateUrl: "app/shared/pics/pic.html",
+		bindings: {
+			item: "="
+		}
+	});
+})();
+
+// item.controller.js
+(() => {
+	angular.module("app").controller("PicController", PicController);
+
+	function PicController() {
+		const vm = this;
+	}
 })();

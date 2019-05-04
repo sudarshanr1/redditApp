@@ -1,9 +1,3 @@
-# A starter kit for projects using the latest version of AngularJS
-
-This project is an application skeleton (initial scaffolding or template) for a typical _modern_ AngularJS web app.
-
-[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/lackovic/angularjs-starter-kit)
-
 ## Features
 
 - Latest version of [AngularJS](https://angularjs.org);
@@ -22,5 +16,3 @@ This project is an application skeleton (initial scaffolding or template) for a 
 1. clone or download
 2. `yarn`
 3. `gulp build`
-
-## References

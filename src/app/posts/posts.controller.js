@@ -11,8 +11,8 @@
 
 		function activate() {
 			getPosts();
-			// Poll every 6 seconds
-			setInterval(getPosts, 6000);
+			// Poll every 60 seconds
+			setInterval(getPosts, 60000);
 		}
 
 		function isPicsState() {
