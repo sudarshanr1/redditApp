@@ -14,5 +14,4 @@
 ## How to use
 
 1. clone or download
-2. `yarn`
-3. `gulp build`
+2. `gulp`
